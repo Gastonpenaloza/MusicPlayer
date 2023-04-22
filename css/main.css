@@ -8,8 +8,88 @@ html, body {
 
 body {
     font-family: sans-serif;
-    background-color: gray;
+    background-color: lightgray;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/* Player */
+
+.player {
+    max-width: 768px;
+    min-width: 320px;
+    background-image: linear-gradient(black, gray);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: white;
+    box-shadow: 2px 2px 3px black;
+    margin-top: 100px;
+}
+
+/* Title */
+
+.title {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Cover */
+
+.cover {
+    width: 200px;
+    height: auto;
+    border-radius: .3rem;
+    display: block;
+    margin: 0 auto 1rem auto;
+}
+
+/* Progress */
+
+.progress-container {
+    height: 0.6rem;
+    background-color: lightgray;
+    margin-bottom: 1rem;
+}
+
+.progress {
+    background-color: darkred;
+    width: 50%;
+    height: 100%;
+}
+
+/* Controls */
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.controls button {
+    background-color: transparent;
+    border: none;
+}
+
+.controls i {
+    font-size: 1.7rem;
+    color: whitesmoke;
+}
+
+/* Songs */
+
+.songs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.songs li {
+    margin-bottom: 1rem;
+}
+
+.songs a {
+    text-decoration: none;
+    color: white;
+}
+
