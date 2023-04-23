@@ -85,11 +85,16 @@ body {
 }
 
 .songs li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .songs a {
     text-decoration: none;
+    color: lightgray;
+}
+
+.songs a.active {
     color: white;
+    font-weight: bold;
 }
 
