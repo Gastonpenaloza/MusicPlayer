@@ -65,6 +65,7 @@ const songList = [
 
 const songs = document.getElementById("songs");
 const audio = document.getElementById("audio");
+const cover = document.getElementById("cover");
 
 // Load song and show list
 
@@ -85,8 +86,10 @@ function loadSongs() {
 function loadSong(songIndex) {
     audio.src = "./audio/" + songList[songIndex].file;
     audio.play();
-}
 
+    cover.src = "./img/" + songList[songIndex].cover;
+    
+}
 // GO
 
 loadSongs();
