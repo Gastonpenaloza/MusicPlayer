@@ -74,6 +74,13 @@ const title = document.getElementById("title");
 const play = document.getElementById("play");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
+const progress = document.getElementById("progress");
+const progressContainer = document.getElementById("progress-container");
+progressContainer.addEventListener("click", setProgress);
+
+// Hear the AUDIO element
+
+audio.addEventListener("timeupdate", updateProgress);
 
 // Hear clicks on controls
 
@@ -116,6 +123,23 @@ function loadSong(songIndex) {
   }
 }
 
+// Progress bar
+
+function updateProgress(event) {
+  const { duration, currentTime } = event.srcElement;
+  const percent = (currentTime / duration) * 100;
+  progress.style.width = percent + "%";
+}
+
+// Make progres bar clickable
+
+function setProgress(event) {
+  const totatlWidth = this.offsetWidth;
+  const progressWidth = event.offsetX;
+  const current = (progressWidth / totatlWidth) * audio.duration;
+  audio.currentTime = current;
+}
+
 // Change controls
 
 function updateControls() {
@@ -134,6 +158,14 @@ function playSong() {
   if (actualSong !== null) {
     audio.play();
     updateControls();
+  } else {
+    actualSong = 0;
+    audio.src = "./audio/" + songList[0].file;
+    audio.play();
+    cover.src = "./img/" + songList[0].cover;
+    title.innerText = songList[0].title;
+    updateControls();
+    changeActiveClass(null, 0);
   }
 }
 
@@ -147,13 +179,21 @@ function pauseSong() {
 // Prev Song
 
 function prevSong() {
-  loadSong(actualSong - 1);
+  if (actualSong > 0) {
+    loadSong(actualSong - 1);
+  } else {
+    loadSong(songList.length - 1);
+  }
 }
 
 // Next Song
 
 function nextSong() {
-  loadSong(actualSong + 1);
+  if (actualSong < songList.length - 1) {
+    loadSong(actualSong + 1);
+  } else {
+    loadSong(0);
+  }
 }
 
 // Change active class
@@ -166,6 +206,14 @@ function changeActiveClass(lastIndex, newIndex) {
   links[newIndex].classList.add("active");
 }
 
+// Play next song when previous is ended
+
+audio.addEventListener("ended", nextSong);
+
 // GO
 
 loadSongs();
+
+if (actualSong === null) {
+  cover.src = "./img/main-cover.jpeg";
+}

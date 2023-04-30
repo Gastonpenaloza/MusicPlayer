@@ -1,100 +1,108 @@
 /* Common */
 
-* {box-sizing: border-box;}
-
-html, body {
-    height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-family: sans-serif;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Player */
 
 .player {
-    max-width: 768px;
-    min-width: 320px;
-    background-image: linear-gradient(black, gray);
-    border-radius: 1rem;
-    padding: 2rem;
-    color: white;
-    box-shadow: 2px 2px 3px black;
-    margin-top: 100px;
+  max-width: 48rem;
+  min-width: 20rem;
+  background-image: linear-gradient(black, gray);
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  box-shadow: 2px 2px 3px black;
+  margin-top: 3rem;
 }
 
-/* Title */
+/* Titles */
+
+.main-title {
+  text-align: center;
+  margin: 0.5rem auto;
+}
+
+.main-subtitle {
+  text-align: center;
+  margin: 0.5rem auto;
+  font-size: 1rem;
+}
 
 .title {
-    margin-top: 0;
-    text-align: center;
+  margin-top: 0;
+  text-align: center;
 }
 
 /* Cover */
 
 .cover {
-    width: 200px;
-    height: auto;
-    border-radius: .3rem;
-    display: block;
-    margin: 0 auto 1rem auto;
+  width: 200px;
+  height: auto;
+  border-radius: 0.3rem;
+  display: block;
+  margin: 0 auto 1rem auto;
 }
 
 /* Progress */
 
 .progress-container {
-    height: 0.6rem;
-    background-color: lightgray;
-    margin-bottom: 1rem;
+  height: 0.6rem;
+  background-color: lightgray;
+  margin-bottom: 1rem;
 }
 
 .progress {
-    background-color: darkred;
-    width: 50%;
-    height: 100%;
+  background-color: darkred;
+  width: 0%;
+  height: 100%;
 }
 
 /* Controls */
 
 .controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .controls button {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .controls i {
-    font-size: 1.7rem;
-    color: whitesmoke;
+  font-size: 1.7rem;
+  color: whitesmoke;
 }
 
 /* Songs */
 
 .songs {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .songs li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .songs a {
-    text-decoration: none;
-    color: lightgray;
+  text-decoration: none;
+  color: lightgray;
 }
 
 .songs a.active {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
-
