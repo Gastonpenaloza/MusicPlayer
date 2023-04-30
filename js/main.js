@@ -71,6 +71,22 @@ const songs = document.getElementById("songs");
 const audio = document.getElementById("audio");
 const cover = document.getElementById("cover");
 const title = document.getElementById("title");
+const play = document.getElementById("play");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+
+// Hear clicks on controls
+
+play.addEventListener("click", () => {
+  if (audio.paused) {
+    playSong();
+  } else {
+    pauseSong();
+  }
+});
+
+prev.addEventListener("click", () => prevSong());
+next.addEventListener("click", () => nextSong());
 
 // Load song and show list
 
@@ -90,21 +106,64 @@ function loadSongs() {
 
 function loadSong(songIndex) {
   if (songIndex !== actualSong) {
-    changeActiveClass(actualSong);
+    changeActiveClass(actualSong, songIndex);
     actualSong = songIndex;
     audio.src = "./audio/" + songList[songIndex].file;
-    audio.play();
+    playSong();
     cover.src = "./img/" + songList[songIndex].cover;
     title.innerText = songList[songIndex].title;
+    updateControls();
   }
+}
+
+// Change controls
+
+function updateControls() {
+  if (audio.paused) {
+    play.classList.remove("fa-pause");
+    play.classList.add("fa-play");
+  } else {
+    play.classList.remove("fa-play");
+    play.classList.add("fa-pause");
+  }
+}
+
+// Play Song
+
+function playSong() {
+  if (actualSong !== null) {
+    audio.play();
+    updateControls();
+  }
+}
+
+// Pause Song
+
+function pauseSong() {
+  audio.pause();
+  updateControls();
+}
+
+// Prev Song
+
+function prevSong() {
+  loadSong(actualSong - 1);
+}
+
+// Next Song
+
+function nextSong() {
+  loadSong(actualSong + 1);
 }
 
 // Change active class
 
-function changeActiveClass() {
-    const links = document.querySelectorAll("a");
-    links[actualSong].classList.remove("active");
-    links[]
+function changeActiveClass(lastIndex, newIndex) {
+  const links = document.querySelectorAll("a");
+  if (lastIndex !== null) {
+    links[lastIndex].classList.remove("active");
+  }
+  links[newIndex].classList.add("active");
 }
 
 // GO
